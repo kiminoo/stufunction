@@ -110,6 +110,8 @@ import Q8StrategyC3 from './Screens/Q8StrategyC3' //답변C 창3
 import Q8StrategyAConfirmation from './Screens/Q8StrategyAConfirmation' //문제 1끝
 import Q8StrategyBCConfirmation from './Screens/Q8StrategyBCConfirmation' //문제 23끝
 
+import Finish from './Screens/Finish' // 문제 끝
+
 //컴포넌트 폴더
 import { NavigationContainer } from '@react-navigation/native'; //네비게이터 이미지 전환
 import { createStackNavigator } from '@react-navigation/stack'; //네비게이터 생성
@@ -423,6 +425,9 @@ export default function App() {
          name = "Q8StrategyBCConfirmation" component={Q8StrategyBCConfirmation} //문제23 클리어
         />
       {/* --------------------------------------------------------------------------------------------- */}
+      <Stack.Screen
+         name = "Finish" component={Finish} //문제 완전 완료
+        />
       </Stack.Navigator>
     </NavigationContainer>
     </MyStore.Provider>

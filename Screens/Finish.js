@@ -6,6 +6,7 @@ import {
     StyleSheet,
     Image
 } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 const styles = StyleSheet.create({
 
@@ -33,57 +34,30 @@ const styles = StyleSheet.create({
 
     //버튼 위치 설정
     ButtonView : {
-       // width:"50%",
-       // heigth:50,
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-       
+        justifyContent: "center",
+        alignItems: "center",
+        
     },
-
-    //타이틀 텍스트
-    // titleText:{
-    //     fontSize: 80,
-    //     fontWeight: "bold",
-    //     alignItems : 'center',
-    //     justifyContent : 'center',
-    //     backgroundColor : 'red'
-    // },
-
-    //라벨 텍스트
-    // Text:{
-    //     fontSize:80,
-    //     fontWeight: "bold",
-    //     alignItems : 'center',
-    //     justifyContent : 'center',
-    // },
-
-    // //인풋 텍스트
-    // textInput: {
-    //     marginTop: 20,
-    //     marginBottom: 10,
-    //     paddingHorizontal: 10,
-    //     height: 40,
-    //     width : '100%',
-    //     borderRadius: 10,
-    //     borderColor: 'gray',
-    //     borderWidth: 1
-    // },
 
     //로그인 회원가입 버튼
     SignButton : {
-        width:50,
+        width: 150,
+        backgroundColor : 'skyblue',
+        fontSize : 30,
+        padding : 3, //텍스트 상자와 글자간의 간격
+        margin: 3, //텍스트와 텍스트끼리의 간격
     },
 
     //로고 사진 설정
     Logo : {
-        width : 500,
-        height : 500,
+        width : "80%",
+        height : "30%",
         alignItems:'center',
         
     }
 });
 
-const Start = (props) => {
+const Finish = (props) => {
 
     // const Start1 = useState("Are you student")
     // const Start2 = useState("OR");
@@ -96,7 +70,7 @@ const Start = (props) => {
             {/* 타이틀 이미지 */}
             {/* <View style = {styles.ImageView}> */}
             <Image style = {styles.Logo}
-            source = {require('../assets/icon2.png')}
+            source = {require('../assets/Finish.png')}
              
             ></Image>    
             {/* </View> */}
@@ -112,30 +86,15 @@ const Start = (props) => {
 
             <View style = {styles.ButtonView}>
              {/*버튼 설정*/}
-             <Button 
-            style = {styles.SignButton}
-            title = 'Teacher' //버튼 이름 설정
-            color= '#191970'
-            //누를시 회원가입 스크린으로 이동
-            onPress={() => {
-                props.navigation.navigate("TeachLogin") //버튼 클릭시 선생님 창으로 이동
-            }}
-            ></Button>
-
-            {/* 버튼 설정 */}
-            <Button
-            style = {styles.SignButton}
-            title = 'Student' //버튼 이름 설정
-            color= '#191970'
-
-            //버튼 클릭시 로그인창 이동
-            onPress={() => {
-                props.navigation.navigate("StuLogin")
-            }}
-            ></Button>
+            <TouchableOpacity style = {styles.SignButton}
+            onPress={ () => {
+                alert("Done")
+            }}>
+            <Text style = {styles.SignButton}>You Did It!</Text>
+            </TouchableOpacity>
             </View>
         </View> 
     </View>
     );
 }
-export default Start;
+export default Finish;

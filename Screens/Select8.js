@@ -138,7 +138,7 @@ const Select8 = (props) => {
                         title = "Next"
                         color = "#191970"
                         onPress = { () => {
-                        props.navigation.navigate("Start") //클릭tl 페이지로 이동
+                        props.navigation.navigate("Finish") //클릭tl 페이지로 이동
                     }}
                 >
                 </Button>
