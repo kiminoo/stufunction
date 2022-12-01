@@ -93,6 +93,7 @@ const Q1StrategyA = (props) => {
     const { stuid, changeID } = useContext(MyStore)
     // 학생이 입력한 답변을 저장하는 useState
     const [Answer, setAnswer] = useState('');
+    const [students, setStudents] = useState();
 
     // 학생이 제출한 답변이 정답인지 판별하는 함수
     const submitBtn = () => {
@@ -160,6 +161,23 @@ const Q1StrategyA = (props) => {
         }
       }
 
+      // 학생이 문제의 답을 제출한 적이 있는지 확인하는 함수
+      const answercheckDB = async ()=>{
+        try{
+            const data = await getDocs(collection(db, "student" ))
+            setStudents(data.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+            {students?.map((row) => {
+                // 현재 로그인한 학생의 답안이 제출되어있는지 체크
+                if(stuid == row.addName && row["1-1-1"] != null){
+                    // 제출한 답변이 있다면 다음 화면으로 넘어가게 됨
+                    props.navigation.navigate("Q1StrategyA2")
+                }
+            })}
+        }catch(error){
+            console.log(error.message)
+        }
+    }
+
     return (
         <View style ={styles.mainView}>
 
@@ -192,9 +210,7 @@ const Q1StrategyA = (props) => {
             style = {styles.CheckButton}
             title = "Next"
             color= '#191970'
-            onPress={()=>
-            props.navigation.navigate("Q1StrategyA2")
-            }
+            onPress={answercheckDB}
             >
             </Button>
         </View>
